@@ -307,30 +307,59 @@ def plot_period_doubling_route(save=False):
         plt.savefig('period_doubling.png', dpi=300, bbox_inches='tight')
     plt.show()
 
+
+def plot_orbit_diagram(r_min=2.5, r_max=4.0, r_steps=5000, iterations=1000, last=200, x0=0.1, save=False):
+    """
+    Generate a clean orbit (bifurcation) diagram for the logistic map.
+    """
+    r_values = np.linspace(r_min, r_max, r_steps)
+    x = x0 * np.ones(r_steps)
+
+    # Burn-in to remove transients
+    for _ in range(iterations - last):
+        x = r_values * x * (1 - x)
+
+    all_r, all_x = [], []
+    for _ in range(last):
+        x = r_values * x * (1 - x)
+        all_r.extend(r_values)
+        all_x.extend(x)
+
+    plt.figure(figsize=(12, 8))
+    plt.plot(all_r, all_x, ',k', alpha=0.25)  # tiny black points
+    plt.xlabel('r', fontsize=14)
+    plt.ylabel('x', fontsize=14)
+    plt.title('Orbit Diagram of the Logistic Map', fontsize=16, fontweight='bold')
+    plt.grid(True, alpha=0.3)
+    if save:
+        plt.savefig('orbit_diagram.png', dpi=300, bbox_inches='tight')
+    plt.show()
+
+
 # Main execution
 if __name__ == "__main__":    
-    # Example 1: Cobweb plot for a periodic orbit
-    print("\n1. Generating Cobweb Plot (r=3.2, periodic)...")
-    plot_cobweb(r=3.2, x0=0.2, iterations=50)
+    # # Example 1: Cobweb plot for a periodic orbit
+    # print("\n1. Generating Cobweb Plot (r=3.2, periodic)...")
+    # plot_cobweb(r=3.2, x0=0.2, iterations=50)
     
-    # Example 2: Cobweb plot for chaos
-    print("\n2. Generating Cobweb Plot (r=3.9, chaotic)...")
-    plot_cobweb(r=3.9, x0=0.2, iterations=100)
+    # # Example 2: Cobweb plot for chaos
+    # print("\n2. Generating Cobweb Plot (r=3.9, chaotic)...")
+    # plot_cobweb(r=3.9, x0=0.2, iterations=100)
     
-    # Example 3: Time series for different regimes
-    print("\n3. Generating Time Series (periodic)...")
-    plot_time_series(r=3.2, x0=0.2, iterations=100)
+    # # Example 3: Time series for different regimes
+    # print("\n3. Generating Time Series (periodic)...")
+    # plot_time_series(r=3.2, x0=0.2, iterations=100)
     
-    print("\n4. Generating Time Series (chaotic)...")
-    plot_time_series(r=3.9, x0=0.2, iterations=100)
+    # print("\n4. Generating Time Series (chaotic)...")
+    # plot_time_series(r=3.9, x0=0.2, iterations=100)
     
     # Example 4: Bifurcation diagram
     print("\n5. Generating Bifurcation Diagram (this may take a moment)...")
     plot_bifurcation()
     
-    # Example 5: Lyapunov exponent
-    print("\n6. Generating Lyapunov Exponent Plot...")
-    plot_lyapunov()
+    # # Example 5: Lyapunov exponent
+    # print("\n6. Generating Lyapunov Exponent Plot...")
+    # plot_lyapunov()
     
     # # Example 6: Comprehensive analysis
     # print("\n7. Generating Comprehensive Analysis...")
@@ -339,5 +368,9 @@ if __name__ == "__main__":
     # # Example 7: Period-doubling route
     # print("\n8. Generating Period-Doubling Illustration...")
     # plot_period_doubling_route()
+
+    print("\n8. Generating Orbit Diagram...")
+    plot_orbit_diagram()
+
     
     print("\nAll plots generated successfully!")
