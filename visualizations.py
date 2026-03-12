@@ -338,20 +338,20 @@ def plot_orbit_diagram(r_min=2.5, r_max=4.0, r_steps=5000, iterations=1000, last
 
 # Main execution
 if __name__ == "__main__":    
-    # # Example 1: Cobweb plot for a periodic orbit
-    # print("\n1. Generating Cobweb Plot (r=3.2, periodic)...")
-    # plot_cobweb(r=3.2, x0=0.2, iterations=50)
+    # Example 1: Cobweb plot for a periodic orbit
+    print("\n1. Generating Cobweb Plot (r=3.2, periodic)...")
+    plot_cobweb(r=3.2, x0=0.2, iterations=50)
     
-    # # Example 2: Cobweb plot for chaos
-    # print("\n2. Generating Cobweb Plot (r=3.9, chaotic)...")
-    # plot_cobweb(r=3.9, x0=0.2, iterations=100)
+    # Example 2: Cobweb plot for chaos
+    print("\n2. Generating Cobweb Plot (r=3.9, chaotic)...")
+    plot_cobweb(r=3.9, x0=0.2, iterations=100)
     
-    # # Example 3: Time series for different regimes
-    # print("\n3. Generating Time Series (periodic)...")
-    # plot_time_series(r=3.2, x0=0.2, iterations=100)
+    # Example 3: Time series for different regimes
+    print("\n3. Generating Time Series (periodic)...")
+    plot_time_series(r=3.2, x0=0.2, iterations=100)
     
-    # print("\n4. Generating Time Series (chaotic)...")
-    # plot_time_series(r=3.9, x0=0.2, iterations=100)
+    print("\n4. Generating Time Series (chaotic)...")
+    plot_time_series(r=3.9, x0=0.2, iterations=100)
     
     # Example 4: Bifurcation diagram
     print("\n5. Generating Bifurcation Diagram (this may take a moment)...")
@@ -365,9 +365,9 @@ if __name__ == "__main__":
     # print("\n7. Generating Comprehensive Analysis...")
     # plot_comprehensive_analysis()
     
-    # # Example 7: Period-doubling route
-    # print("\n8. Generating Period-Doubling Illustration...")
-    # plot_period_doubling_route()
+    # Example 7: Period-doubling route
+    print("\n8. Generating Period-Doubling Illustration...")
+    plot_period_doubling_route()
 
     print("\n8. Generating Orbit Diagram...")
     plot_orbit_diagram()
